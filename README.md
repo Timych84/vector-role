@@ -1,13 +1,13 @@
 ansible-vector
 =========
 
-Simple Vector deploy.
+Simple Vector deploy with demo connect to Clickhouse.
 
-Activate two sources:
+Activate two demo sources:
 - demo_logs
 - journald
 
-And two sinks:
+And two demo sinks:
 - test_console for demo_logs
 - clickhouse_syslog for journald
 
