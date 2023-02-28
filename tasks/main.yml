@@ -1,16 +1,18 @@
 ---
 # tasks file for vector-role
-- name: Install vector | Download vector distrib
-  ansible.builtin.get_url:
-    url: "https://packages.timber.io/vector/{{ vector_version }}/vector-{{ vector_version }}-1.x86_64.rpm"
-    dest: "./vector-{{ vector_version }}.rpm"
-    mode: 0644
-- name: Install vector | Install vector package
-  become: true
-  ansible.builtin.yum:
-    name: vector-{{ vector_version }}.rpm
-  notify: Restart vector service
-  ignore_errors: "{{ ansible_check_mode }}"
+# - name: facts
+#   debug:
+#     var: ansible_facts
+- name: Install vector | Include pkg_mgr tasks
+  ansible.builtin.include_tasks:
+      file: "{{ lookup('first_found', params) }}"
+      apply:
+        tags: [install]
+  vars:
+    params:
+      files:
+        - "install/{{ ansible_pkg_mgr }}.yml"
+        - 'empty.yml'
 - name: Install vector | Delete default vector config
   become: true
   ansible.builtin.file:
