@@ -7,6 +7,6 @@
   become: true
   ansible.builtin.yum:
     name: vector-{{ vector_version }}.rpm
-    disable_gpg_check: True
+    disable_gpg_check: true
   notify: Restart vector service
   ignore_errors: "{{ ansible_check_mode }}"
