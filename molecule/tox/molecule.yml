@@ -4,8 +4,8 @@ dependency:
 driver:
   name: podman
 platforms:
-  - name: centos7
-    image: centos:7
+  - name: ubuntu_focal
+    image: ubuntu:focal
     dockerfile: ../resources/Dockerfile.j2
     # pre_build_image: true
     command: /sbin/init
