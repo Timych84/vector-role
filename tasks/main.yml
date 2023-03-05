@@ -1,8 +1,4 @@
 ---
-# tasks file for vector-role
-# - name: facts
-#   debug:
-#     var: ansible_facts
 - name: Install vector | Include pkg_mgr tasks
   ansible.builtin.include_tasks:
       file: "{{ lookup('first_found', params) }}"
